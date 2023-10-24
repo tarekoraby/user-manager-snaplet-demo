@@ -25,7 +25,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 @NpmPackage(value = "@fontsource/cabin", version = "4.5.0")
-@Theme(value = "projectsmanager")
+@Theme(value = "demo")
 @Push
 @EnableVaadin({"com.vaadin.snaplets.usermanager.vaadin", "com.vaadin.demo.pm"})
 @EntityScan(basePackageClasses = Application.class)
