@@ -2,7 +2,6 @@ package com.vaadin.demo.pm.security;
 
 import com.vaadin.demo.pm.views.login.LoginView;
 import com.vaadin.flow.spring.security.VaadinWebSecurity;
-import com.vaadin.snaplets.usermanager.exception.UserDisabledException;
 import com.vaadin.snaplets.usermanager.service.PersistentLoginService;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,13 +10,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
-import org.springframework.context.annotation.Primary;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.ExceptionMappingAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
@@ -65,7 +62,7 @@ public class SecurityConfiguration extends VaadinWebSecurity {
 
     public AuthenticationFailureHandler authenticationFailureHandler() {
         Map<String, String> exceptionMappings = new HashMap<>();
-        exceptionMappings.put(UserDisabledException.class.getCanonicalName(),
+        exceptionMappings.put(DisabledException.class.getCanonicalName(),
                 "/login?error=disabled");
         exceptionMappings.put(BadCredentialsException.class.getCanonicalName(),
                 "/login?error=badcredentials");
