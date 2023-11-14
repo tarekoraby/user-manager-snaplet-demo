@@ -12,7 +12,7 @@
     <properties>
         <java.version>17</java.version>
         <vaadin.version>24.2.0</vaadin.version>
-        <snaplet.usermanager.version>1.0.0-SNAPSHOT</snaplet.usermanager.version>
+        <snaplet.usermanager.version>1.0.0.alpha01</snaplet.usermanager.version>
     </properties>
 
     <parent>
